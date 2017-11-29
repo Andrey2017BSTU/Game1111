@@ -93,5 +93,8 @@ public class Game1111 {
        Game gm = new Game();
        gm.startGame();
     }
-    
+   private class GITASD {} 
 }
+
+//  проверка git
+    
