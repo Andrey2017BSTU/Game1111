@@ -96,5 +96,5 @@ public class Game1111 {
    private class GITASD {} 
 }
 
-//  леция дискретка
+//  леция дискретка проверка
     
