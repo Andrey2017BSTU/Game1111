@@ -96,5 +96,5 @@ public class Game1111 {
    private class GITASD {} 
 }
 
-//  проверка git24
+//  проверка git23
     
