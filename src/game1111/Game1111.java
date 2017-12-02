@@ -1,7 +1,7 @@
 
 package game1111;
 
-import static game1111.Field.mas;
+//import static game1111.Field.mas;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +36,7 @@ class Hero{
 
     }*/
     void hh(){
-        mas[y][x]=2;
+        Field.mas[y][x]=2;
     }
     
     
@@ -96,5 +96,7 @@ public class Game1111 {
    private class GITASD {} 
 }
 
-//  git hub 621
+
+//  леция дискретка проверка 
+
     
