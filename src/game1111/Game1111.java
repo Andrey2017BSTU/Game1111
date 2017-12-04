@@ -1,4 +1,3 @@
-
 package game1111;
 
 //import static game1111.Field.mas;
@@ -97,4 +96,4 @@ public class Game1111 {
 }
 
 //  228 1337 645
-    
+
