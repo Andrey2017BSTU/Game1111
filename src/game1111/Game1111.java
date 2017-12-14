@@ -1,7 +1,5 @@
-
 package game1111;
 
-//import static game1111.Field.mas;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,13 +26,6 @@ class Field{
 
 class Hero{
     int x=0, y=9, step = 0;
-    
-    /*Hero(){
-        x = 0;
-        y = 9;
-        mas[y][x]=2;
-
-    }*/
     void hh(){
         Field.mas[y][x]=2;
     }
@@ -61,8 +52,6 @@ class Game{
     
     
     void move(){
-        
-        //mas[h.y][h.x]=2;
         switch(getDirection()){
             case 8: h.y--; break;
             case 2: h.y++; break;
@@ -75,13 +64,10 @@ class Game{
     
     void startGame(){
         f.inField(5);
-        while(h.x!=9 & h.y!=0){
-        f.printField();
-        h.hh();
-        //mas[h.y][h.x]=2;
-        //int b = getDirection();
-        //System.out.println(b);
-        move();
+        while(h.x!=9 || h.y!=0){
+            h.hh();
+            f.printField();
+            move(); 
         }
     }
     
@@ -93,8 +79,5 @@ public class Game1111 {
        Game gm = new Game();
        gm.startGame();
     }
-   private class GITASD {} 
-}
-
-//  228 1337 645
     
+}
