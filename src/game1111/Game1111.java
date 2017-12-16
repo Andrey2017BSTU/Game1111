@@ -10,14 +10,15 @@ class Field{
         int k = 0;
         while(k<obs){
             mas[(int)(Math.random()*10)][(int)(Math.random()*10)]=1;
-            if (mas[9][0] != 1 && mas[0][9] != 1)
-                k++;  
+            if (mas[9][0] != 1 && mas[0][9] != 1) {  
+                k++;
+            }  
         }    
     }
     void printField(){
-        for (int i = 0; i < mas.length; i++){
-            for (int j = 0; j < mas.length; j++){
-                System.out.print(mas[i][j] + "\t");
+        for (int[] ma : mas) {
+            for (int j = 0; j < mas.length; j++) {
+                System.out.print(ma[j] + "\t");
             } 
             System.out.println();
         }
@@ -53,9 +54,9 @@ class Game{
     
     void move(){
         switch(getDirection()){
-            case 8: h.y--; break;
-            case 2: h.y++; break;
-            case 4: h.x--; break;
+            case 8: h.y--; h.y++; Field.mas[h.x][h.y]=0;h.y-- ;break;/// Тут менял, нужно попробовать  
+            case 2: h.y++; break;/////добавить цикл в gameField
+            case 4: h.x--; break;/////или Startgame что бы поле обновлялось после каждого хода
             case 6: h.x++; break;
             default: System.out.println("Неверное направление!");
         }
