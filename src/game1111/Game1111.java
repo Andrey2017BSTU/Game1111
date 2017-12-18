@@ -16,7 +16,7 @@ class Field{
         }    
     }
     void printField(){
-        for (int[] ma : mas) {
+        for (int[] ma : mas) {// Тут переписал цикл
             for (int j = 0; j < mas.length; j++) {
                 System.out.print(ma[j] + "\t");
             } 
