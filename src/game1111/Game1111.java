@@ -6,11 +6,13 @@ import java.io.InputStreamReader;
 
 class Field{
     static int  mas[][] = new int [10][10];//написать заполнение массива нулями 
-     
+     static int r1,r2;
     void inField(int obs){//и присваивать их индексы переменными что б
         int k = 0;// потом обращяться к ним чере f. а не h.
         while(k<obs){
-            mas[(int)(Math.random()*10)][(int)(Math.random()*10)]=1;
+            r1=(int)(Math.random()*10);
+            r2=(int)(Math.random()*10);
+            mas[r1][r2]=1;
             if (mas[9][0] != 1 && mas[0][9] != 1) {  
                 k++;
             }  
@@ -51,6 +53,7 @@ class Game{
         } catch (IOException ex) {
             System.out.println("Ошибка ввода!!!");
         }
+        
 
         return direction;
     }
@@ -60,22 +63,22 @@ class Game{
     
     void move(){  int y1, y2, x1, x2;  
         switch(getDirection()){
-            case 8: y1=h.y; h.y--; Field.mas[y1][h.x]=0; break ;///добил идею свою наконец 
-            case 2: y2=h.y; h.y++; Field.mas[y2][h.x]=0; break;// блять ебался с этим пока наконец не понял,
-            case 4: x1=h.x; h.x--; Field.mas[h.y][x1]=0; break;///что ты массив задал через y;x ,а не 
-            case 6: x2=h.x; h.x++; Field.mas[h.y][x2]=0; break;// через x;y 
+            case 8: if (Field.mas[--h.y][h.x]==1) {h.y++;System.out.println ("Game Over");break;}else y1=++h.y; h.y--; Field.mas[y1][h.x]=0; break ;///добил идею свою наконец 
+            case 2: if (Field.mas[++h.y][h.x]==1) {h.y--;System.out.println ("Game Over");break;}else y2=--h.y; h.y++; Field.mas[y2][h.x]=0; break;// блять ебался с этим пока наконец не понял,
+            case 4: if (Field.mas[h.y][--h.x]==1) {h.x++;System.out.println ("Game Over");break;}else x1=++h.x; h.x--; Field.mas[h.y][x1]=0; break;///что ты массив задал через y;x ,а не 
+            case 6: if (Field.mas[h.y][++h.x]==1) {h.x--;System.out.println ("Game Over");break;}else x2=--h.x; h.x++; Field.mas[h.y][x2]=0; break;// через x;y 
             default: System.out.println("Неверное направление!");
         
         }
        // System.out.println(h.x);
     }
-    
+   
     void startGame(){
         f.inField(5);
         while(h.x!=9 || h.y!=0){
             h.hh();
             f.printField();
-            move(); 
+            move(); //попробавать написать первый заход также дальше что б сначала ход потом поле что б сообщение об ошибке было после поля п не перед
             
         }
     }
