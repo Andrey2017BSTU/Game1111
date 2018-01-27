@@ -19,7 +19,7 @@ class Field{
             r1=(int)(Math.random()*10);
             r2=(int)(Math.random()*10);
             mas[r1][r2]='l';
-            if (mas[9][0] != 1 && mas[0][9] != 1) {  
+            if (mas[9][0] != 'l' && mas[0][9] != 'l') {  
                 k++;
             }  
         }    
@@ -45,10 +45,6 @@ class Hero{
 }
 
 class Game{
-
-    Game() {
-
-    }
     private int getDirection(){
         int direction = 0;
         
@@ -60,12 +56,8 @@ class Game{
             System.out.println("Ошибка ввода!!!");
         }
       b=direction;
-        
-
-        return direction;
-    
+      return direction;
     }
-  
     
     Hero h = new Hero();
     Field f = new Field();
@@ -76,13 +68,13 @@ class Game{
             case 2: /*if (Field.mas[++h.y][h.x]==1) {h.y--;System.out.println ("Game Over");break;}else*//* b=2;*/y2=--h.y; h.y++; Field.mas[y2][h.x]='O'; break;// блять ебался с этим пока наконец не понял,
             case 4: /*if (Field.mas[h.y][--h.x]==1) {h.x++;System.out.println ("Game Over");break;}else*/ /*b=4;*/x1=++h.x; h.x--; Field.mas[h.y][x1]='O'; break;///что ты массив задал через y;x ,а не 
             case 6: /*if (Field.mas[h.y][++h.x]==1) {h.x--;System.out.println ("Game Over");break;}else */x2=--h.x; h.x++; Field.mas[h.y][x2]='O';/*b=6;*/ break;// через x;y 
-            default: System.out.println("Неверное направление!");
+            //default: System.out.println("Неверное направление!");
         
         }
     }
         boolean check_move(){ boolean a = true;
         switch(getDirection()){
-        case 8: if (Field.mas[--h.y][h.x]=='l') {h.y++;System.out.println ("Game Over");a=false;}break;
+        case 8: if (Field.mas[--h.y][h.x]=='l') {++h.y;System.out.println ("Game Over");a=false;}break;
         case 2: if (Field.mas[++h.y][h.x]=='l') {h.y--;System.out.println ("Game Over");a=false;}break;
         case 4: if (Field.mas[h.y][--h.x]=='l') {h.x++;System.out.println ("Game Over");a=false;}break;
         case 6: if (Field.mas[h.y][++h.x]=='l') {h.x--;System.out.println ("Game Over");a=false;}break;
@@ -100,7 +92,7 @@ class Game{
         
    
     void startGame(){
-        f.inField(5);
+        f.inField(10);//добавил препятствий
         while(h.x!=9 || h.y!=0){//попробовать написать первый заход также ,дальше что б сначала ход потом поле, что б сообщение об ошибке было после поля ,а не перед
             h.hh();
             f.printField();
@@ -111,25 +103,21 @@ class Game{
                 System.exit(0);
             }
             if (check_direction()==false){
-            System.out.println("Неверное направление");
-            check_move();
-            }
-            else {
+            System.out.println("Неверное направление");//тут баг маленький есть   
+            check_move();//когда неврное нажатие срабатывает и ты по-новому нажимаешь
+            }//старое положение героя остаётся
+            else {//и дальше всё норм хз как пофиксить
                 move();
             }
-            
-            }
+        }
         System.out.println ("This game is yours)))\nCongratulations");
-        
-    }}
+    }
+}
     
-//}
-
 public class Game1111 {
 
     public static void main(String[] args) {
        Game gm = new Game();
        gm.startGame();
     }
-    //228
 }
